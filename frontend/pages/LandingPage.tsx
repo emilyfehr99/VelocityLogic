@@ -14,6 +14,7 @@ import {
   Bot
 } from 'lucide-react';
 import dashboardImg from '../assets/dashboard.png';
+import { trackEvent } from '../lib/analytics';
 
 const LandingPage: React.FC = () => {
   return (
@@ -50,13 +51,19 @@ const LandingPage: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <button
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                trackEvent('cta_click', { button: 'hero_waitlist' });
+                document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="group relative px-8 py-4 bg-textMain text-background font-bold tracking-tight rounded-full hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
             >
               <span className="relative flex items-center gap-2">Join Waitlist <ArrowRight className="w-4 h-4" /></span>
             </button>
             <button
-              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                trackEvent('cta_click', { button: 'hero_demo' });
+                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-8 py-4 text-textMain bg-surface border border-border hover:bg-surfaceHighlight font-medium rounded-full transition-all flex items-center justify-center gap-2 w-full sm:w-auto shadow-sm hover:shadow-md active:scale-[0.98]"
             >
               <Clock className="w-4 h-4" />
@@ -358,7 +365,10 @@ const LandingPage: React.FC = () => {
                 </li>
               </ul>
               <button
-                onClick={() => window.location.href = '/#/signup?plan=standard'}
+                onClick={() => {
+                  trackEvent('pricing_select', { plan: 'standard' });
+                  window.location.href = '/#/signup?plan=standard';
+                }}
                 className="w-full py-4 rounded-xl bg-surfaceHighlight border border-border hover:bg-border text-textMain font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 Join Waitlist
@@ -395,7 +405,10 @@ const LandingPage: React.FC = () => {
                 </li>
               </ul>
               <button
-                onClick={() => window.location.href = '/#/signup?plan=pro'}
+                onClick={() => {
+                  trackEvent('pricing_select', { plan: 'pro' });
+                  window.location.href = '/#/signup?plan=pro';
+                }}
                 className="w-full py-4 rounded-xl bg-textMain text-background font-bold hover:opacity-90 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
               >
                 Join Waitlist

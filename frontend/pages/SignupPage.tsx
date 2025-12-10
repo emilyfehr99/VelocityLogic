@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import { trackEvent } from '../lib/analytics';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, Mail, Lock, Loader2, User, Building2, Check } from 'lucide-react';
 
@@ -50,6 +52,7 @@ const WaitlistPage: React.FC = () => {
 
             if (error) throw error;
 
+            trackEvent('waitlist_signup', { plan });
             setIsSubmitted(true);
         } catch (error) {
             console.error('Error submitting waitlist:', error);

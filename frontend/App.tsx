@@ -51,11 +51,15 @@ const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   );
 };
 
-// Scroll to top wrapper
+// Scroll to top wrapper & Analytics
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    // Track Page View
+    import('./lib/analytics').then(({ trackPageView }) => {
+      trackPageView(pathname);
+    });
   }, [pathname]);
   return null;
 };
