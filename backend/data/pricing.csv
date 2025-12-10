@@ -1,0 +1,11 @@
+Service Name,Keywords,Unit Price,Unit,Description
+Furnace Installation,"Furnace, Install, Heating System",3500.00,Each,Complete furnace installation including labor and materials
+AC Installation,"AC, Air Conditioner, Cooling System",4200.00,Each,Complete AC unit installation with ductwork
+Service Call,"Service, Maintenance, Repair, Diagnostic",150.00,Each,Standard service call and diagnostic
+Furnace Repair,"Furnace, Repair, Fix, Heating",250.00,Hour,Per hour labor rate for furnace repairs
+AC Repair,"AC, Air Conditioner, Repair, Fix, Cooling",250.00,Hour,Per hour labor rate for AC repairs
+Ductwork Installation,"Ductwork, Ducts, Ventilation",1800.00,Each,Complete ductwork installation
+Thermostat Installation,"Thermostat, Smart Thermostat, Control",350.00,Each,Smart thermostat installation and setup
+Air Filter Replacement,"Filter, Air Filter, Replacement",75.00,Each,Standard air filter replacement
+Refrigerant Recharge,"Refrigerant, Freon, Recharge",300.00,Each,AC refrigerant recharge service
+Emergency Service,"Emergency, After Hours, Urgent",400.00,Each,After-hours emergency service call

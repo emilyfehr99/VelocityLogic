@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Velocity Logic | Dominate Your Market</title>
+    <meta name="description" content="Be The First To Quote. The automated quoting engine that closes deals while you sleep." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              // Semantic Colors mapped to CSS Variables
+              background: 'rgb(var(--bg-color) / <alpha-value>)',
+              surface: 'rgb(var(--surface-color) / <alpha-value>)',
+              surfaceHighlight: 'rgb(var(--surface-highlight) / <alpha-value>)',
+              textMain: 'rgb(var(--text-main) / <alpha-value>)',
+              textMuted: 'rgb(var(--text-muted) / <alpha-value>)',
+              border: 'rgb(var(--border-color) / <alpha-value>)',
+              
+              primary: {
+                DEFAULT: '#3b82f6', // Blue 500
+                glow: '#60a5fa', // Blue 400
+              },
+              accent: {
+                DEFAULT: '#06b6d4', // Cyan 500
+                glow: '#22d3ee', // Cyan 400
+              }
+            },
+            letterSpacing: {
+              tighter: '-0.04em',
+              tight: '-0.02em',
+              normal: '-0.01em',
+              wide: '0.02em',
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'spotlight': 'var(--spotlight-gradient)',
+            },
+            animation: {
+              'spotlight': 'spotlight 2s ease .75s 1 forwards',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              spotlight: {
+                '0%': { opacity: 0, transform: 'translate(-50%, -150%) scale(0.5)' },
+                '100%': { opacity: 1, transform: 'translate(-50%, 0) scale(1)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Apple-style Light Mode */
+        --bg-color: 245 245 247; /* #F5F5F7 */
+        --surface-color: 255 255 255; /* #FFFFFF */
+        --surface-highlight: 242 242 247; /* #F2F2F7 */
+        --text-main: 29 29 31; /* #1D1D1F */
+        --text-muted: 134 134 139; /* #86868B */
+        --border-color: 0 0 0; /* Opacity handled in utility */
+        --spotlight-gradient: conic-gradient(from 0deg at 50% -20%, transparent 0deg, rgba(0,0,0,0.05) 40deg, transparent 80deg);
+      }
+
+      .dark {
+        /* Hard-Tech Dark Mode */
+        --bg-color: 9 9 11; /* #09090b */
+        --surface-color: 24 24 27; /* #18181b */
+        --surface-highlight: 39 39 42; /* #27272a */
+        --text-main: 244 244 245; /* #f4f4f5 */
+        --text-muted: 161 161 170; /* #a1a1aa */
+        --border-color: 255 255 255;
+        --spotlight-gradient: conic-gradient(from 0deg at 50% -20%, transparent 0deg, rgba(255,255,255,0.1) 40deg, transparent 80deg);
+      }
+
+      body {
+        background-color: rgb(var(--bg-color));
+        color: rgb(var(--text-main));
+        transition: background-color 0.4s ease, color 0.2s ease;
+        antialiased: true;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+      }
+
+      /* Noise Texture - Subtle in light, visible in dark */
+      .bg-noise {
+        position: relative;
+      }
+      .bg-noise::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.02; /* Very subtle in light */
+      }
+      .dark .bg-noise::before {
+        opacity: 0.04; /* Stronger in dark */
+      }
+      
+      /* Glass Card: White/Translucent in Light, Dark/Translucent in Dark */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+      }
+
+      .dark .glass-card {
+        background: rgba(24, 24, 27, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+      }
+      
+      .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(to bottom right, #18181b, #52525b);
+      }
+      .dark .text-gradient {
+        background-image: linear-gradient(to bottom right, #fff, #a1a1aa);
+      }
+      
+      .text-gradient-primary {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(to right, #2563eb, #06b6d4);
+      }
+      .dark .text-gradient-primary {
+        background-image: linear-gradient(to right, #60a5fa, #22d3ee);
+      }
+
+      /* Grid Background */
+      .bg-grid {
+        background-size: 50px 50px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+      }
+      .dark .bg-grid {
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      }
+
+      /* Utility for transitions */
+      .transition-theme {
+        transition-property: background-color, border-color, color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
