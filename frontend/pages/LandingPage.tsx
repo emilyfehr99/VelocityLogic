@@ -72,9 +72,10 @@ const LandingPage: React.FC = () => {
             {/* Image Container */}
             <div className="relative rounded-2xl bg-surface border border-border/50 shadow-2xl overflow-hidden transform transition-all duration-700 ease-out hover:scale-[1.01] hover:-translate-y-2">
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent z-10 pointer-events-none"></div>
-              src={dashboardImg}
-              alt="Velocity Logic Dashboard"
-              className="w-full h-auto object-cover"
+              <img
+                src={dashboardImg}
+                alt="Velocity Logic Dashboard"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
