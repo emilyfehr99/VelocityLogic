@@ -6,6 +6,12 @@ const WaitlistPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [plan, setPlan] = useState('standard');
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        companyName: '',
+        email: ''
+    });
     const location = useLocation();
 
     useEffect(() => {
@@ -16,14 +22,42 @@ const WaitlistPage: React.FC = () => {
         }
     }, [location]);
 
-    const handleSignup = (e: React.FormEvent) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate waitlist submission
-        setTimeout(() => {
-            setIsLoading(false);
+
+        try {
+            const { error } = await supabase
+                .from('waitlist')
+                .insert([
+                    {
+                        first_name: formData.firstName,
+                        last_name: formData.lastName,
+                        company_name: formData.companyName,
+                        email: formData.email,
+                        plan_interest: plan,
+                        created_at: new Date().toISOString()
+                    }
+                ]);
+
+            if (error) throw error;
+
             setIsSubmitted(true);
-        }, 1500);
+        } catch (error) {
+            console.error('Error submitting waitlist:', error);
+            // Optionally show error to user
+            alert('Failed to join waitlist. Please try again.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     if (isSubmitted) {
@@ -93,6 +127,9 @@ const WaitlistPage: React.FC = () => {
                                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-textMuted" />
                                     <input
                                         type="text"
+                                        name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleInputChange}
                                         required
                                         className="w-full bg-background border border-border rounded-xl py-3 pl-10 pr-4 text-textMain placeholder:text-textMuted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                         placeholder="John"
@@ -104,6 +141,9 @@ const WaitlistPage: React.FC = () => {
                                 <div className="relative">
                                     <input
                                         type="text"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleInputChange}
                                         required
                                         className="w-full bg-background border border-border rounded-xl py-3 px-4 text-textMain placeholder:text-textMuted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                         placeholder="Doe"
@@ -118,6 +158,9 @@ const WaitlistPage: React.FC = () => {
                                 <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-textMuted" />
                                 <input
                                     type="text"
+                                    name="companyName"
+                                    value={formData.companyName}
+                                    onChange={handleInputChange}
                                     required
                                     className="w-full bg-background border border-border rounded-xl py-3 pl-10 pr-4 text-textMain placeholder:text-textMuted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                     placeholder="Acme Inc."
@@ -131,6 +174,9 @@ const WaitlistPage: React.FC = () => {
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-textMuted" />
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                     required
                                     className="w-full bg-background border border-border rounded-xl py-3 pl-10 pr-4 text-textMain placeholder:text-textMuted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                                     placeholder="you@company.com"

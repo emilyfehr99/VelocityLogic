@@ -79,9 +79,9 @@ export const Header: React.FC = () => {
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            <Link to="/login" className="hidden md:block text-sm font-medium text-textMuted hover:text-textMain transition-colors">
+            {/* <Link to="/login" className="hidden md:block text-sm font-medium text-textMuted hover:text-textMain transition-colors">
               Sign In
-            </Link>
+            </Link> */}
             <button
               onClick={() => {
                 if (location.pathname !== '/') {
