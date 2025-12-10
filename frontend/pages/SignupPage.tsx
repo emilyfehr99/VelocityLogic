@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowLeft, Mail, Lock, Loader2, User, Building2, Check } from 'lucide-react';
 
-const SignupPage: React.FC = () => {
+const WaitlistPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [plan, setPlan] = useState('standard');
-    const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
@@ -19,12 +19,32 @@ const SignupPage: React.FC = () => {
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate signup
+        // Simulate waitlist submission
         setTimeout(() => {
             setIsLoading(false);
-            navigate('/');
+            setIsSubmitted(true);
         }, 1500);
     };
+
+    if (isSubmitted) {
+        return (
+            <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 selection:bg-primary/30 font-sans transition-colors duration-500 pt-32 pb-12">
+                <div className="w-full max-w-md bg-surface border border-border rounded-3xl p-8 shadow-2xl text-center">
+                    <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <Check className="w-8 h-8 text-green-500" />
+                    </div>
+                    <h1 className="text-3xl font-bold text-textMain mb-4">You're on the list!</h1>
+                    <p className="text-textMuted mb-8 leading-relaxed">
+                        Thanks for joining the Velocity Logic waitlist. We've reserved your spot for the <strong>{plan} Plan</strong>.
+                        We'll be in touch shortly.
+                    </p>
+                    <Link to="/" className="inline-flex items-center gap-2 text-primary font-bold hover:underline">
+                        <ArrowLeft className="w-4 h-4" /> Return Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4 selection:bg-primary/30 font-sans transition-colors duration-500 pt-32 pb-12">
@@ -37,8 +57,8 @@ const SignupPage: React.FC = () => {
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-purple-500"></div>
 
                     <div className="text-center mb-8">
-                        <h1 className="text-3xl font-bold text-textMain mb-2 tracking-tight">Get Started</h1>
-                        <p className="text-textMuted">Start automating your quotes today</p>
+                        <h1 className="text-3xl font-bold text-textMain mb-2 tracking-tight">Join Waitlist</h1>
+                        <p className="text-textMuted">Secure your spot for early access</p>
                     </div>
 
                     {/* Plan Selection */}
@@ -118,18 +138,7 @@ const SignupPage: React.FC = () => {
                             </div>
                         </div>
 
-                        <div>
-                            <label className="block text-xs font-medium text-textMuted uppercase tracking-wider mb-1.5">Password</label>
-                            <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-textMuted" />
-                                <input
-                                    type="password"
-                                    required
-                                    className="w-full bg-background border border-border rounded-xl py-3 pl-10 pr-4 text-textMain placeholder:text-textMuted/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
-                                    placeholder="••••••••"
-                                />
-                            </div>
-                        </div>
+                        {/* Password Field Removed for Waitlist */}
 
                         <div className="bg-surfaceHighlight/50 rounded-xl p-4 border border-border/50">
                             <div className="flex items-start gap-3">
@@ -137,7 +146,7 @@ const SignupPage: React.FC = () => {
                                     <Check className="w-3 h-3 text-primary" />
                                 </div>
                                 <p className="text-xs text-textMuted leading-relaxed">
-                                    You are selecting the <span className="text-textMain font-bold capitalize">{plan} Plan</span>.
+                                    You are interested in the <span className="text-textMain font-bold capitalize">{plan} Plan</span>.
                                     {plan === 'pro' ? ' Includes full CRM integration.' : ' Perfect for starting out.'}
                                 </p>
                             </div>
@@ -148,21 +157,13 @@ const SignupPage: React.FC = () => {
                             disabled={isLoading}
                             className="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-blue-600 transition-all shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Create Account'}
+                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Join Waitlist'}
                         </button>
                     </form>
-
-                    <div className="mt-8 text-center">
-                        <p className="text-sm text-textMuted">
-                            Already have an account?{' '}
-                            <Link to="/login" className="text-primary hover:text-blue-400 font-medium transition-colors">
-                                Sign In
-                            </Link>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
+        </div >
     );
 };
 

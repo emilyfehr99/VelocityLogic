@@ -53,7 +53,7 @@ const LandingPage: React.FC = () => {
               onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               className="group relative px-8 py-4 bg-textMain text-background font-bold tracking-tight rounded-full hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span className="relative flex items-center gap-2">Start Auto-Quoting <ArrowRight className="w-4 h-4" /></span>
+              <span className="relative flex items-center gap-2">Join Waitlist <ArrowRight className="w-4 h-4" /></span>
             </button>
             <button
               onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
@@ -361,7 +361,7 @@ const LandingPage: React.FC = () => {
                 onClick={() => window.location.href = '/#/signup?plan=standard'}
                 className="w-full py-4 rounded-xl bg-surfaceHighlight border border-border hover:bg-border text-textMain font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                Start Standard
+                Join Waitlist
               </button>
             </div>
 
@@ -398,7 +398,7 @@ const LandingPage: React.FC = () => {
                 onClick={() => window.location.href = '/#/signup?plan=pro'}
                 className="w-full py-4 rounded-xl bg-textMain text-background font-bold hover:opacity-90 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
               >
-                Start Pro
+                Join Waitlist
               </button>
             </div>
           </div>
