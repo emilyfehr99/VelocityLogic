@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -77,6 +78,7 @@ const App: React.FC = () => {
           <Footer />
         </div>
       </Router>
+      <Analytics />
     </ThemeProvider>
   );
 };
