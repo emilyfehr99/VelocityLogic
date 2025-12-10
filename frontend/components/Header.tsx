@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from '../App';
+import logoImg from '../assets/logo.png';
 
 export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -46,7 +47,7 @@ export const Header: React.FC = () => {
           <Link to="/" className="flex items-center gap-2 group">
             <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-white border border-border overflow-hidden group-hover:border-primary/50 transition-colors shadow-sm">
               <div className="absolute inset-0 bg-primary/20 blur opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img src="/assets/logo.png" alt="Velocity Logic" className="w-6 h-6 object-contain relative z-10" />
+              <img src={logoImg} alt="Velocity Logic" className="w-6 h-6 object-contain relative z-10" />
             </div>
             <span className="font-bold text-lg tracking-tight text-textMain group-hover:text-primary transition-colors">
               Velocity<span className="text-textMuted font-normal">Logic</span>
