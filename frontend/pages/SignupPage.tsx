@@ -163,8 +163,7 @@ const WaitlistPage: React.FC = () => {
                 </div>
             </div>
         </div>
-        </div >
     );
 };
 
-export default SignupPage;
+export default WaitlistPage;
