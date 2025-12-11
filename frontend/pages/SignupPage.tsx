@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { trackEvent } from '../lib/analytics';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowLeft, Mail, Lock, Loader2, User, Building2, Check } from 'lucide-react';
+import { ArrowLeft, Mail, Lock, Loader2, User, Building2, Check, Zap } from 'lucide-react';
 
 const WaitlistPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -99,28 +99,40 @@ const WaitlistPage: React.FC = () => {
                     </div>
 
                     {/* Plan Selection */}
-                    <div className="grid grid-cols-2 gap-3 mb-8 p-1 bg-background rounded-xl border border-border">
-                        <button
-                            type="button"
-                            onClick={() => setPlan('standard')}
-                            className={`py-2 px-4 rounded-lg text-sm font-medium transition-all ${plan === 'standard'
-                                ? 'bg-surfaceHighlight text-textMain shadow-sm border border-border'
-                                : 'text-textMuted hover:text-textMain'
-                                }`}
-                        >
-                            Standard
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => setPlan('pro')}
-                            className={`py-2 px-4 rounded-lg text-sm font-medium transition-all ${plan === 'pro'
-                                ? 'bg-primary text-white shadow-md shadow-primary/20'
-                                : 'text-textMuted hover:text-textMain'
-                                }`}
-                        >
-                            Pro Plan
-                        </button>
-                    </div>
+                    {new URLSearchParams(location.search).has('plan') ? (
+                        <div className="mb-8 p-4 bg-surfaceHighlight/30 border border-primary/20 rounded-2xl flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <Zap className="w-5 h-5 text-primary fill-primary/20" />
+                            </div>
+                            <div>
+                                <p className="text-xs font-bold text-primary uppercase tracking-wider mb-0.5">Selected Plan</p>
+                                <h2 className="text-lg font-bold text-textMain capitalize">{plan} Plan</h2>
+                            </div>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 gap-3 mb-8 p-1 bg-background rounded-xl border border-border">
+                            <button
+                                type="button"
+                                onClick={() => setPlan('standard')}
+                                className={`py-2 px-4 rounded-lg text-sm font-medium transition-all ${plan === 'standard'
+                                    ? 'bg-surfaceHighlight text-textMain shadow-sm border border-border'
+                                    : 'text-textMuted hover:text-textMain'
+                                    }`}
+                            >
+                                Standard
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => setPlan('pro')}
+                                className={`py-2 px-4 rounded-lg text-sm font-medium transition-all ${plan === 'pro'
+                                    ? 'bg-primary text-white shadow-md shadow-primary/20'
+                                    : 'text-textMuted hover:text-textMain'
+                                    }`}
+                            >
+                                Pro Plan
+                            </button>
+                        </div>
+                    )}
 
                     <form onSubmit={handleSignup} className="space-y-5">
                         <div className="grid grid-cols-2 gap-4">
