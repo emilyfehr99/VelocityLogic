@@ -44,3 +44,23 @@ FROM (
 ) session_stats
 GROUP BY 1
 ORDER BY 1 DESC;
+
+-- 5. Exact Visit Times (Raw Log)
+SELECT 
+    session_id,
+    page_path,
+    created_at as exact_time_utc,
+    to_char(created_at AT TIME ZONE 'EST', 'YYYY-MM-DD HH12:MI:SS AM') as exact_time_est
+FROM analytics_events
+WHERE event_name = 'page_view'
+ORDER BY created_at DESC
+LIMIT 50;
+
+-- 6. Busiest Hours of the Day (Heatmap)
+SELECT 
+    EXTRACT(HOUR FROM created_at AT TIME ZONE 'EST') as hour_of_day,
+    COUNT(*) as visits
+FROM analytics_events
+WHERE event_name = 'page_view'
+GROUP BY 1
+ORDER BY 1 ASC;
