@@ -28,3 +28,19 @@ FROM analytics_events
 WHERE referrer IS NOT NULL AND referrer != ''
 GROUP BY 1
 ORDER BY 2 DESC;
+
+-- 4. Average Session Duration (Time on Site)
+CREATE OR REPLACE VIEW avg_session_duration AS
+SELECT 
+    date_trunc('day', created_at) as day,
+    AVG(duration_minutes) as avg_minutes
+FROM (
+    SELECT 
+        session_id,
+        MIN(created_at) as start_time,
+        EXTRACT(EPOCH FROM (MAX(created_at) - MIN(created_at))) / 60 as duration_minutes
+    FROM analytics_events
+    GROUP BY session_id
+) session_stats
+GROUP BY 1
+ORDER BY 1 DESC;

@@ -57,8 +57,9 @@ const ScrollToTop = () => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
     // Track Page View
-    import('./lib/analytics').then(({ trackPageView }) => {
+    import('./lib/analytics').then(({ trackPageView, startSessionHeartbeat }) => {
       trackPageView(pathname);
+      startSessionHeartbeat();
     });
   }, [pathname]);
   return null;

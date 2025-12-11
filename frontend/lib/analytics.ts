@@ -43,3 +43,22 @@ export const trackEvent = async (eventName: string, data: Record<string, any> = 
 export const trackPageView = (path: string) => {
     trackEvent('page_view', { path });
 };
+
+// Track time on site via heartbeats every 30 seconds
+let heartbeatInterval: NodeJS.Timeout | null = null;
+
+export const startSessionHeartbeat = () => {
+    if (heartbeatInterval) return;
+
+    // Initial ping
+    trackEvent('heartbeat', { active: document.visibilityState === 'visible' });
+
+    heartbeatInterval = setInterval(() => {
+        if (document.visibilityState === 'visible') {
+            trackEvent('heartbeat', {
+                path: window.location.pathname,
+                active: true
+            });
+        }
+    }, 30000); // 30 seconds
+};
