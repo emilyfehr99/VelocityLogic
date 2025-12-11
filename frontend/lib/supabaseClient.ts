@@ -7,4 +7,10 @@ if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('Missing Supabase environment variables');
 }
 
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+const fallbackUrl = 'https://placeholder.supabase.co';
+const fallbackKey = 'placeholder';
+
+export const supabase = createClient(
+    supabaseUrl || fallbackUrl,
+    supabaseAnonKey || fallbackKey
+);
