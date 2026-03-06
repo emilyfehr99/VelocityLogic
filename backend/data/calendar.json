@@ -1,0 +1,29 @@
+[
+    {
+        "id": "JOB-1",
+        "quote_id": "QT-1",
+        "customer_name": "Emergency Furnace Repair",
+        "start": "2026-03-06T14:00:00",
+        "end": "2026-03-06T15:00:00",
+        "is_winter_urgent": true,
+        "status": "SCHEDULED"
+    },
+    {
+        "id": "JOB-2",
+        "quote_id": "QT-2",
+        "customer_name": "Standard Inspection",
+        "start": "2026-03-07T10:00:00",
+        "end": "2026-03-07T11:00:00",
+        "is_winter_urgent": false,
+        "status": "SCHEDULED"
+    },
+    {
+        "id": "JOB-3",
+        "quote_id": "QT-3",
+        "customer_name": "Frozen Pipe Thawing",
+        "start": "2026-03-06T16:00:00",
+        "end": "2026-03-06T17:00:00",
+        "is_winter_urgent": true,
+        "status": "SCHEDULED"
+    }
+]

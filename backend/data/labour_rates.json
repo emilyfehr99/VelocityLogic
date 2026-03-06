@@ -1,0 +1,21 @@
+{
+    "Manitoba": {
+        "Winnipeg": 0.0,
+        "Brandon": 0.12,
+        "Thompson": 0.25,
+        "Steinbach": 0.05,
+        "Portage la Prairie": 0.08,
+        "The Pas": 0.22,
+        "Flin Flon": 0.28
+    },
+    "Saskatchewan": {
+        "Saskatoon": 0.0,
+        "Regina": 0.0,
+        "Moose Jaw": 0.20,
+        "Prince Albert": 0.15,
+        "Yorkton": 0.10,
+        "Swift Current": 0.12,
+        "North Battleford": 0.18,
+        "Estevan": 0.14
+    }
+}

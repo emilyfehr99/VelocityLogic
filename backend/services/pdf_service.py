@@ -105,6 +105,13 @@ class PDFService:
         pdf.set_text_color(0, 0, 0)
         pdf.cell(0, 5, f"Quote #: {quote_number}", ln=1)
         pdf.cell(0, 5, f"Customer: {customer_name}", ln=1)
+        
+        # Expiry Date (Phase 14 prep)
+        expiry_date = quote_data.get("expiry_date", (datetime.now().strftime("%B %d, %Y"))) 
+        pdf.set_text_color(220, 38, 38) # Red for urgency
+        pdf.cell(0, 5, f"Valid Until: {expiry_date}", ln=1)
+        pdf.set_text_color(0, 0, 0)
+        
         pdf.ln(5)
         
         return pdf.get_y()
@@ -159,37 +166,80 @@ class PDFService:
         return pdf.get_y()
     
     def _draw_total_box(self, pdf: FPDF, quote_data: Dict[str, Any], start_y: float) -> None:
-        """Draw the total box with teal accent."""
+        """Draw the total box with optional rebate visibility."""
+        # Check if we should show rebates
+        eligible_rebates = quote_data.get("eligible_rebates", [])
+        show_rebate = quote_data.get("show_rebate_on_pdf", True) and len(eligible_rebates) > 0
+        net_cost_estimate = quote_data.get("net_cost_estimate", {})
+        estimated_rebate_val = net_cost_estimate.get("estimated_rebate", 0)
+        
+        box_height = 55 if show_rebate else 40
+        
         # Position the total box on the right
         pdf.set_xy(120, start_y)
         
-        # Box background with teal accent
+        # Box background
         pdf.set_fill_color(*self.TEAL_ACCENT)
         pdf.set_draw_color(*self.TEAL_ACCENT)
-        pdf.rect(120, start_y, 80, 40, style="FD")
+        pdf.rect(120, start_y, 80, box_height, style="FD")
         
-        # Text in white for contrast
+        # Text in white
         pdf.set_text_color(255, 255, 255)
         pdf.set_font("Arial", "B", 10)
         
+        y_offset = start_y + 5
+        
         # Subtotal
-        pdf.set_xy(125, start_y + 5)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, "Subtotal:", align="L")
-        pdf.set_xy(125, start_y + 5)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, f"${quote_data['subtotal']:.2f}", align="R")
+        y_offset += 10
         
         # Tax
-        pdf.set_xy(125, start_y + 15)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, f"Tax ({quote_data.get('tax_rate', 0.1)*100:.1f}%):", align="L")
-        pdf.set_xy(125, start_y + 15)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, f"${quote_data['tax']:.2f}", align="R")
+        y_offset += 13
         
         # Total
         pdf.set_font("Arial", "B", 12)
-        pdf.set_xy(125, start_y + 28)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, "TOTAL:", align="L")
-        pdf.set_xy(125, start_y + 28)
+        pdf.set_xy(125, y_offset)
         pdf.cell(70, 8, f"${quote_data['total']:.2f}", align="R")
+        y_offset += 12
+
+        # Rebate Section (if enabled)
+        if show_rebate:
+            pdf.set_draw_color(255, 255, 255)
+            pdf.line(125, y_offset - 2, 195, y_offset - 2)
+            
+            pdf.set_font("Arial", "B", 9)
+            pdf.set_xy(125, y_offset)
+            rebate_name = eligible_rebates[0].get("name", "Provincial Rebate")
+            pdf.cell(70, 6, f"Est. {rebate_name}:", align="L")
+            pdf.set_xy(125, y_offset)
+            pdf.cell(70, 6, f"-${estimated_rebate_val:,.2f}", align="R")
+            
+            y_offset += 7
+            pdf.set_font("Arial", "B", 11)
+            pdf.set_xy(125, y_offset)
+            pdf.cell(70, 6, "NET COST:", align="L")
+            pdf.set_xy(125, y_offset)
+            pdf.cell(70, 6, f"${quote_data['total'] - estimated_rebate_val:,.2f}", align="R")
+            
+            # Application Link
+            rebate_url = eligible_rebates[0].get("portal_url", "https://efficiencyMB.ca/apply")
+            pdf.set_y(pdf.get_y() + 10)
+            pdf.set_x(120)
+            pdf.set_font("Arial", "B", 8)
+            pdf.set_text_color(*self.NAVY_BLUE)
+            pdf.cell(80, 5, "ACTION REQUIRED:", ln=1, align="C")
+            pdf.set_font("Arial", "U", 7)
+            pdf.set_text_color(37, 99, 235) # Blue link
+            pdf.cell(80, 5, f"Apply for Rebate: {rebate_url}", ln=1, align="C", link=rebate_url)
     
     def _draw_footer(self, pdf: FPDF) -> None:
         """Draw footer with company information."""

@@ -1,0 +1,24 @@
+[
+    {
+        "id": "U-1",
+        "email": "admin@velocitylogic.ai",
+        "password": "hashed_password_placeholder",
+        "full_name": "System Admin",
+        "role": "super_admin",
+        "managed_contractor_ids": [
+            "CON-1",
+            "CON-2",
+            "CON-3"
+        ]
+    },
+    {
+        "id": "U-2",
+        "email": "moosejaw@plumbing.ca",
+        "password": "hashed_password_placeholder",
+        "full_name": "Moose Jaw Plumber",
+        "role": "contractor_owner",
+        "managed_contractor_ids": [
+            "CON-1"
+        ]
+    }
+]

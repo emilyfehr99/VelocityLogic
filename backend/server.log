@@ -1,0 +1,37 @@
+============================================================
+🚀 Velocity Logic Agent - Starting Up
+============================================================
+✓ LLM Service initialized
+✓ Loaded 10 pricing items from data/pricing.csv
+✓ Pricing Engine initialized
+✓ PDF Service initialized
+⚠ Warning: Google Cloud Credentials not found. Running in Mock Mode (simulated email).
+✓ Gmail Service initialized
+============================================================
+✓ All services initialized successfully
+============================================================
+✓ Agent initialized for web interface
+============================================================
+🌐 Starting Velocity Logic Web Interface
+============================================================
+📱 Open your browser to: http://localhost:5001
+============================================================
+ * Serving Flask app 'web_interface'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.165:5001
+Press CTRL+C to quit
+127.0.0.1 - - [06/Mar/2026 14:25:47] "POST /api/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:25:47] "GET /api/admin/clients HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:25:52] "POST /api/process-email HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:25:52] "GET /api/quotes HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:25:52] "GET /api/quotes HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:25:52] "GET /api/quotes HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:51] "POST /api/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:51] "GET /api/admin/clients HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:55] "POST /api/process-email HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:55] "GET /api/quotes HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:55] "GET /api/quotes HTTP/1.1" 200 -
+127.0.0.1 - - [06/Mar/2026 14:26:55] "GET /api/quotes HTTP/1.1" 200 -

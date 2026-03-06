@@ -61,7 +61,7 @@ class VelocityLogicAgent:
         print("✓ All services initialized successfully")
         print("=" * 60)
     
-    def process_email(self, email_body: str, from_email: str, thread_id: Optional[str] = None) -> bool:
+    def process_email(self, email_body: str, from_email: str, thread_id: Optional[str] = None, markup_percent: float = 0.0, winter_multiplier_active: bool = False, city: str = None, province: str = None) -> Dict[str, Any]:
         """
         Process a single email through the full workflow.
         
@@ -69,9 +69,13 @@ class VelocityLogicAgent:
             email_body: The email body text
             from_email: Sender's email address
             thread_id: Optional Gmail thread ID
+            markup_percent: Optional markup percentage
+            winter_multiplier_active: Whether to apply winter surcharge
+            city: Optional city for regional premium
+            province: Optional province
         
         Returns:
-            True if successful, False otherwise
+            Dictionary with results
         """
         try:
             print(f"\n{'='*60}")
@@ -83,18 +87,29 @@ class VelocityLogicAgent:
             parsed_data = self.llm_service.parse_email_intent(email_body)
             customer_name = parsed_data.get("customer_name", "Customer")
             extracted_items = parsed_data.get("extracted_items", [])
+            confidence_score = parsed_data.get("confidence_score", 0)
+            ai_reasoning = parsed_data.get("ai_reasoning", [])
             
             print(f"   ✓ Customer: {customer_name}")
+            print(f"   ✓ Confidence: {confidence_score}/100")
             print(f"   ✓ Services requested: {len(extracted_items)}")
-            for item in extracted_items:
-                print(f"      - {item.get('service_requested')} (Qty: {item.get('quantity', 1)})")
             
             # Step 2: Calculate quote
             print("\n[2/5] Calculating quote...")
-            quote_data = self.pricing_engine.calculate_quote(extracted_items)
+            quote_data = self.pricing_engine.calculate_quote(
+                extracted_items, 
+                markup_percent=markup_percent,
+                winter_multiplier_active=winter_multiplier_active,
+                city=city,
+                province=province
+            )
             print(f"   ✓ Subtotal: ${quote_data['subtotal']:.2f}")
+            if city and quote_data.get('regional_premium_total', 0) > 0:
+                print(f"   ✓ Regional Premium ({city}): +${quote_data['regional_premium_total']:.2f}")
             print(f"   ✓ Tax: ${quote_data['tax']:.2f}")
             print(f"   ✓ Total: ${quote_data['total']:.2f}")
+            if winter_multiplier_active:
+                print(f"   ❄ Winter Multiplier Applied: +${quote_data['winter_surcharge_total']:.2f}")
             
             # Step 3: Generate PDF
             print("\n[3/5] Generating PDF quote...")
@@ -123,16 +138,30 @@ class VelocityLogicAgent:
             
             if draft:
                 print(f"\n✅ Successfully processed email and created draft!")
-                return True
+                return {
+                    "success": True,
+                    "quote_number": quote_number,
+                    "customer_name": customer_name,
+                    "confidence_score": confidence_score,
+                    "ai_reasoning": ai_reasoning,
+                    "quote_data": quote_data,
+                    "pdf_path": pdf_path,
+                    "status": "DRAFT_SENT",
+                    "status_history": [
+                        {"status": "RECEIVED", "timestamp": datetime.now().isoformat(), "message": "Email received from client"},
+                        {"status": "AI_PARSING", "timestamp": datetime.now().isoformat(), "message": f"AI identified intent with {confidence_score}% confidence"},
+                        {"status": "PDF_GENERATED", "timestamp": datetime.now().isoformat(), "message": "Quote PDF generated and Gmail draft created"}
+                    ]
+                }
             else:
                 print(f"\n⚠ Draft creation may have failed (check logs)")
-                return False
+                return {"success": False, "error": "Draft creation failed"}
             
         except Exception as e:
             print(f"\n✗ Error processing email: {e}")
             import traceback
             traceback.print_exc()
-            return False
+            return {"success": False, "error": str(e)}
     
     def _generate_email_body(self, customer_name: str, quote_data: Dict[str, Any], quote_number: str) -> str:
         """Generate professional email body for the quote."""

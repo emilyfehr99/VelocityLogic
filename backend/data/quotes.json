@@ -1,0 +1,116 @@
+[
+    {
+        "id": "QT-20260306-142552",
+        "quote_number": "QT-20260306-142552",
+        "customer_name": "Customer",
+        "customer_email": "customer@example.com",
+        "province": "Manitoba",
+        "total": 165.0,
+        "line_items": [
+            {
+                "service_name": "Service Call",
+                "description": "Standard service call and diagnostic",
+                "quantity": 1,
+                "unit_price": 150.0,
+                "base_price": 150.0,
+                "unit": "Each",
+                "line_total": 150.0,
+                "match_score": 100,
+                "winter_multiplier_active": false,
+                "winter_surcharge": 0
+            }
+        ],
+        "subtotal": 150.0,
+        "tax": 15.0,
+        "markup_percent": 0.0,
+        "winter_multiplier_active": false,
+        "winter_surcharge_total": 0.0,
+        "pdf_url": "/api/pdf/quote_QT-20260306-142552.pdf",
+        "confidence_score": 0,
+        "ai_reasoning": [],
+        "status": "NEEDS_REVIEW",
+        "status_history": [
+            {
+                "status": "RECEIVED",
+                "timestamp": "2026-03-06T14:25:52.736956",
+                "message": "Email received from client"
+            },
+            {
+                "status": "AI_PARSING",
+                "timestamp": "2026-03-06T14:25:52.736965",
+                "message": "AI identified intent with 0% confidence"
+            },
+            {
+                "status": "PDF_GENERATED",
+                "timestamp": "2026-03-06T14:25:52.736969",
+                "message": "Quote PDF generated and Gmail draft created"
+            }
+        ],
+        "eligible_rebates": [],
+        "net_cost_estimate": {
+            "gross_total": 165.0,
+            "estimated_rebate": 0,
+            "net_total": 165.0
+        },
+        "created_at": "2026-03-06T14:25:52.737013",
+        "priority_score": 31.7,
+        "contractor_id": "CON-1"
+    },
+    {
+        "id": "QT-20260306-142655",
+        "quote_number": "QT-20260306-142655",
+        "customer_name": "Customer",
+        "customer_email": "customer@example.com",
+        "province": "Manitoba",
+        "total": 165.0,
+        "line_items": [
+            {
+                "service_name": "Service Call",
+                "description": "Standard service call and diagnostic",
+                "quantity": 1,
+                "unit_price": 150.0,
+                "base_price": 150.0,
+                "unit": "Each",
+                "line_total": 150.0,
+                "match_score": 100,
+                "winter_multiplier_active": false,
+                "winter_surcharge": 0
+            }
+        ],
+        "subtotal": 150.0,
+        "tax": 15.0,
+        "markup_percent": 0.0,
+        "winter_multiplier_active": false,
+        "winter_surcharge_total": 0.0,
+        "pdf_url": "/api/pdf/quote_QT-20260306-142655.pdf",
+        "confidence_score": 0,
+        "ai_reasoning": [],
+        "status": "NEEDS_REVIEW",
+        "status_history": [
+            {
+                "status": "RECEIVED",
+                "timestamp": "2026-03-06T14:26:55.165377",
+                "message": "Email received from client"
+            },
+            {
+                "status": "AI_PARSING",
+                "timestamp": "2026-03-06T14:26:55.165388",
+                "message": "AI identified intent with 0% confidence"
+            },
+            {
+                "status": "PDF_GENERATED",
+                "timestamp": "2026-03-06T14:26:55.165391",
+                "message": "Quote PDF generated and Gmail draft created"
+            }
+        ],
+        "eligible_rebates": [],
+        "net_cost_estimate": {
+            "gross_total": 165.0,
+            "estimated_rebate": 0,
+            "net_total": 165.0
+        },
+        "created_at": "2026-03-06T14:26:55.165422",
+        "priority_score": 31.7,
+        "contractor_id": "CON-1"
+    }
+]

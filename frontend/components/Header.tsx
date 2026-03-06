@@ -59,6 +59,9 @@ export const Header: React.FC = () => {
             <Link to="/vs-jobber" className="text-sm font-medium text-textMuted hover:text-textMain transition-colors">
               Compare
             </Link>
+            <Link to="/dashboard" className="text-sm font-medium text-textMuted hover:text-textMain transition-colors">
+              Dashboard
+            </Link>
             <button onClick={() => handleNavClick('features')} className="text-sm font-medium text-textMuted hover:text-textMain transition-colors cursor-pointer bg-transparent border-none">
               Features
             </button>

@@ -7,6 +7,13 @@ import LandingPage from './pages/LandingPage';
 import VsJobberPage from './pages/VsJobberPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import JobUpload from './pages/JobUpload';
+import QuoteViewer from './pages/QuoteViewer';
+import ScheduleManager from './pages/ScheduleManager';
+import SMSDemo from './pages/SMSDemo';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import BigDashboard from './pages/BigDashboard';
+import { AuthProvider } from './contexts/AuthContext';
 
 // Theme Context
 type Theme = 'dark' | 'light';
@@ -67,24 +74,33 @@ const ScrollToTop = () => {
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <Router>
-        <ScrollToTop />
-        <div className="bg-background min-h-screen text-textMain font-sans selection:bg-primary/30 selection:text-textMain transition-colors duration-300">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/vs-jobber" element={<VsJobberPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-      <Analytics />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="bg-background min-h-screen text-textMain font-sans selection:bg-primary/30 selection:text-textMain transition-colors duration-300">
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/vs-jobber" element={<VsJobberPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/dashboard" element={<BigDashboard />} />
+                <Route path="/agent-upload" element={<JobUpload />} />
+                <Route path="/upload" element={<JobUpload />} />
+                <Route path="/quotes" element={<QuoteViewer />} />
+                <Route path="/schedule" element={<ScheduleManager />} />
+                <Route path="/sms" element={<SMSDemo />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+        <Analytics />
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 

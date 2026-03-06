@@ -1,0 +1,37 @@
+[
+    {
+        "id": "C-1",
+        "name": "John Smith",
+        "phone": "+13065551111",
+        "email": "john.smith@example.com",
+        "equipment": {
+            "type": "Furnace",
+            "model": "Carrier Infinity 98",
+            "installed_year": 2010,
+            "last_service": "2024-10-15"
+        },
+        "location": "Moose Jaw, SK",
+        "quotes": [
+            "QT-1",
+            "QT-4"
+        ],
+        "total_spend": 2450.00
+    },
+    {
+        "id": "C-2",
+        "name": "Martha Evans",
+        "phone": "+13065552222",
+        "email": "martha.evans@example.com",
+        "equipment": {
+            "type": "Boiler",
+            "model": "Lennox GWB8",
+            "installed_year": 2022,
+            "last_service": "2025-01-20"
+        },
+        "location": "Regina, SK",
+        "quotes": [
+            "QT-2"
+        ],
+        "total_spend": 120.00
+    }
+]

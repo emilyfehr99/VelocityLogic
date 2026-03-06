@@ -39,41 +39,32 @@ class LLMService:
         Returns:
             Dictionary with customer_name, service_requested, and quantity
         """
-        system_prompt = """You are an HVAC estimator assistant. Your job is to extract key information from customer emails.
+        system_prompt = """You are the Velocity Logic AI Estimator. Your goal is to convert unstructured emails into structured line-item quotes.
+
+CRITICAL RULES:
+1. EXPLANATION: Provide self-contained, plain-language reasoning for EVERY line item. 
+   - BAD: "Mapped item 1 to internal ID 452."
+   - GOOD: "I chose Standard Boiler Service because you mentioned the pilot light is out."
+2. TEMPLATES: If you detect a common job type (e.g., 'Full HVAC Install', 'Standard Maintenance'), suggest a match in your reasoning.
+3. CURRENCY: All prices in CAD.
+4. WINTER: Identify if the job involves frozen ground or sub-zero conditions (-40C).
 
 Return a JSON object with the following structure:
 {
     "customer_name": "Customer's name if mentioned, otherwise 'Customer'",
-    "service_requested": "The main service or product requested (e.g., 'Furnace Installation', 'AC Repair', 'Service Call')",
-    "quantity": 1
-}
-
-If multiple services are requested, return an array of items:
-{
-    "customer_name": "Customer's name",
+    "confidence_score": 85,
+    "ai_reasoning": ["Step 1...", "Step 2..."],
+    "job_type": "HVAC/Plumbing/Electrical",
+    "template_hint": "Name of likely template (if any)",
     "items": [
         {
-            "service_requested": "Service 1",
-            "quantity": 1
-        },
-        {
-            "service_requested": "Service 2",
+            "service_requested": "The specific service",
             "quantity": 1
         }
     ]
 }
 
-Be specific with service names. Common services include:
-- Furnace Installation
-- AC Installation
-- Service Call
-- Furnace Repair
-- AC Repair
-- Ductwork Installation
-- Thermostat Installation
-- Air Filter Replacement
-- Refrigerant Recharge
-- Emergency Service
+Be specific with service names. If an email is vague, assign a low confidence score (20-50).
 
 Always return valid JSON only, no additional text."""
 
@@ -106,6 +97,8 @@ Always return valid JSON only, no additional text."""
             
             return {
                 "customer_name": customer_name,
+                "confidence_score": parsed_data.get("confidence_score", 70),
+                "ai_reasoning": parsed_data.get("ai_reasoning", ["Standard AI processing"]),
                 "extracted_items": extracted_items
             }
             

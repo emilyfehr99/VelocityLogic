@@ -1,0 +1,12 @@
+{
+    "Furnace Installation": 3500.0,
+    "AC Installation": 4200.0,
+    "Service Call": 150.0,
+    "Furnace Repair": 250.0,
+    "AC Repair": 250.0,
+    "Ductwork Installation": 1800.0,
+    "Thermostat Installation": 350.0,
+    "Air Filter Replacement": 75.0,
+    "Refrigerant Recharge": 300.0,
+    "Emergency Service": 400.0
+}
