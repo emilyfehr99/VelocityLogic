@@ -107,7 +107,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ onTranscript, city, provi
                 {!isRecording && !audioUrl ? (
                     <button
                         onClick={startRecording}
-                        className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-blue-200"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-blue-200/50"
                     >
                         <Mic size={20} />
                         Hold to Speak Quote
@@ -115,7 +115,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ onTranscript, city, provi
                 ) : isRecording ? (
                     <button
                         onClick={stopRecording}
-                        className="flex-1 flex items-center justify-center gap-2 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-red-200"
+                        className="flex-1 flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-red-200/50"
                     >
                         <Square size={20} />
                         Stop Recording
@@ -125,7 +125,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ onTranscript, city, provi
                         <button
                             disabled={isProcessing}
                             onClick={processVoice}
-                            className="flex-[2] flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-emerald-200 disabled:opacity-50"
+                            className="flex-[2] flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-2xl transition-all active:scale-95 shadow-lg shadow-emerald-200/50 disabled:opacity-50"
                         >
                             {isProcessing ? (
                                 <Loader2 size={20} className="animate-spin" />
@@ -136,7 +136,7 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({ onTranscript, city, provi
                         </button>
                         <button
                             onClick={() => { setAudioUrl(null); chunksRef.current = []; }}
-                            className="flex-1 py-3 bg-slate-200 hover:bg-slate-300 text-slate-600 font-bold rounded-2xl transition-all"
+                            className="p-3 bg-slate-200 hover:bg-slate-300 text-slate-600 font-bold rounded-2xl transition-all active:scale-90"
                         >
                             <Trash2 size={20} className="mx-auto" />
                         </button>

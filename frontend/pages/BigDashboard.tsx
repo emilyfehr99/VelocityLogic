@@ -198,12 +198,13 @@ export default function BigDashboard() {
 
             {/* Metrics Overview */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <Card className="bg-blue-600 text-white border-none shadow-blue-500/20 shadow-xl overflow-hidden relative">
+                <Card className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white border-none shadow-blue-500/30 shadow-2xl overflow-hidden relative group">
                     <div className="relative z-10">
-                        <p className="text-blue-100 text-xs font-bold uppercase tracking-wider">Total Pipeline</p>
-                        <p className="text-3xl font-black mt-1">${drafts.reduce((sum, d) => sum + (d.total || 0), 0).toLocaleString()}</p>
+                        <p className="text-blue-100 text-[10px] font-black uppercase tracking-widest opacity-80">Total Pipeline</p>
+                        <p className="text-4xl font-black mt-1 drop-shadow-sm">${drafts.reduce((sum, d) => sum + (d.total || 0), 0).toLocaleString()}</p>
                     </div>
-                    <TrendingUp className="absolute right-[-10px] bottom-[-10px] text-blue-500/30 w-24 h-24 rotate-[-15deg]" />
+                    <TrendingUp className="absolute right-[-10px] bottom-[-10px] text-white/10 w-32 h-32 rotate-[-15deg] group-hover:scale-110 group-hover:rotate-[0deg] transition-all duration-500" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-3xl opacity-50" />
                 </Card>
 
                 <Card className="bg-white border-slate-100 hover:border-blue-200 transition-all cursor-pointer group">
@@ -230,13 +231,16 @@ export default function BigDashboard() {
                     </div>
                 </Card>
 
-                <Card className="bg-indigo-100 text-indigo-900 border-none relative overflow-hidden">
+                <Card className="bg-gradient-to-br from-indigo-500 to-purple-700 text-white border-none shadow-indigo-500/20 shadow-xl relative overflow-hidden group">
                     <div className="relative z-10">
-                        <p className="text-indigo-600 text-[10px] font-black uppercase tracking-wider">Agency Efficiency</p>
-                        <p className="text-2xl font-black mt-1">94%</p>
-                        <p className="text-[10px] font-bold text-indigo-500 mt-1">Avg. Response: 12m</p>
+                        <p className="text-indigo-100 text-[10px] font-black uppercase tracking-widest opacity-80">Agency Efficiency</p>
+                        <p className="text-4xl font-black mt-1 drop-shadow-sm">94%</p>
+                        <div className="flex items-center gap-1.5 mt-2 bg-white/10 backdrop-blur-md w-fit px-2 py-0.5 rounded-full border border-white/10">
+                            <Clock size={10} className="text-emerald-300" />
+                            <p className="text-[10px] font-bold text-indigo-50">Avg. Response: 12m</p>
+                        </div>
                     </div>
-                    <Zap className="absolute right-[-10px] bottom-[-10px] text-indigo-200 w-20 h-20 rotate-12" />
+                    <Zap className="absolute right-[-10px] bottom-[-10px] text-white/10 w-28 h-28 rotate-12 group-hover:scale-110 group-hover:rotate-0 transition-all duration-500" />
                 </Card>
             </div>
 
@@ -254,17 +258,20 @@ export default function BigDashboard() {
                                 { name: 'Brandon Boiler Co', volume: 8400, quotes: 7, health: 'WARNING' },
                                 { name: 'Winnipeg HVAC Pros', volume: 32100, quotes: 24, health: 'OPTIMAL' }
                             ].map((biz, i) => (
-                                <div key={i} className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl hover:bg-slate-100 transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-                                    <div className="flex items-center gap-3">
-                                        <div className={`w-2 h-10 rounded-full ${biz.health === 'OPTIMAL' ? 'bg-emerald-400' : 'bg-amber-400'}`} />
+                                <div key={i} className="flex items-center justify-between p-4 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 cursor-pointer border border-transparent hover:border-slate-100 rounded-[2rem] group/biz">
+                                    <div className="flex items-center gap-4">
+                                        <div className={`w-3 h-12 rounded-full ${biz.health === 'OPTIMAL' ? 'bg-gradient-to-b from-emerald-400 to-emerald-600' : 'bg-gradient-to-b from-amber-400 to-amber-600'} shadow-lg shadow-current/20`} />
                                         <div>
-                                            <p className="font-black text-slate-900 text-sm">{biz.name}</p>
-                                            <p className="text-[10px] font-bold text-slate-400 uppercase">{biz.quotes} Pending Quotes</p>
+                                            <p className="font-black text-slate-900 group-hover/biz:text-blue-600 transition-colors uppercase tracking-tight">{biz.name}</p>
+                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{biz.quotes} Pending Quotes</p>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <p className="font-black text-slate-900">${biz.volume.toLocaleString()}</p>
-                                        <p className="text-[10px] font-bold text-slate-400 uppercase">Pipeline Value</p>
+                                        <p className="font-black text-slate-900 text-lg">${biz.volume.toLocaleString()}</p>
+                                        <div className="flex items-center gap-1 justify-end">
+                                            <TrendingUp size={10} className="text-emerald-500" />
+                                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Pipeline Value</p>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
