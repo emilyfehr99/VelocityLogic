@@ -175,6 +175,115 @@
 </head>
   <body>
     <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
+
+    <noscript>
+      <style>
+        .vl-page { font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; max-width: 960px; margin: 3rem auto; padding: 0 1.5rem 4rem; color: #111827; line-height: 1.6; }
+        .vl-kicker { text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem; color: #6b7280; font-weight: 600; margin-bottom: 0.75rem; }
+        .vl-hero-title { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1rem; }
+        .vl-hero-title span { background-image: linear-gradient(90deg, #2563eb, #06b6d4); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .vl-hero-sub { font-size: 1.05rem; color: #4b5563; max-width: 34rem; }
+        .vl-section { margin-top: 3rem; }
+        .vl-section h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: #111827; }
+        .vl-section p { margin-bottom: 0.5rem; color: #4b5563; }
+        .vl-pill { display: inline-block; margin-top: 1rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: #eff6ff; color: #1d4ed8; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }
+        .vl-list { margin: 0.5rem 0 0 1.25rem; color: #4b5563; }
+        .vl-list li { margin-bottom: 0.25rem; }
+        .vl-testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.25rem; }
+        .vl-quote { border-radius: 1.25rem; border: 1px solid #e5e7eb; padding: 1rem 1.2rem; background: #f9fafb; font-size: 0.9rem; }
+        .vl-quote small { display: block; margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280; }
+        .vl-pricing { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 1.25rem; }
+        .vl-plan { border-radius: 1.25rem; border: 1px solid #e5e7eb; padding: 1.25rem 1.5rem; background: #ffffff; }
+        .vl-plan h3 { margin-bottom: 0.25rem; font-size: 1rem; }
+        .vl-price { font-size: 1.75rem; font-weight: 800; margin: 0.35rem 0; }
+        .vl-badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px; font-size: 0.7rem; background: #111827; color: #f9fafb; text-transform: uppercase; letter-spacing: 0.16em; }
+      </style>
+
+      <div class="vl-page">
+        <div>
+          <div class="vl-kicker">The Automatic Sales Engine</div>
+          <h1 class="vl-hero-title">
+            Be The First To Quote. <br />
+            <span>Every Single Time.</span>
+          </h1>
+          <p class="vl-hero-sub">
+            Your competitors take 24 hours to reply. Velocity Logic replies in about 30 seconds.
+            It reads your incoming emails, checks your inventory, and drafts professional quotes while you sleep.
+          </p>
+          <div class="vl-pill">Velocity Logic | Dominate Your Market</div>
+        </div>
+
+        <div class="vl-section">
+          <h2>The First Quoting Tool That Doesn’t Need You</h2>
+          <p>Velocity Logic is an AI-powered estimator for trades and home services businesses. It:</p>
+          <ul class="vl-list">
+            <li>Understands messy, real-world emails, texts, and voice notes from customers.</li>
+            <li>Looks up your live inventory or price sheets before it makes a promise.</li>
+            <li>Calculates square footage, linear feet, and waste factors for you.</li>
+            <li>Drafts clear, ready-to-send quotes in seconds so you can approve and send.</li>
+          </ul>
+        </div>
+
+        <div class="vl-section">
+          <h2>Customer Stories</h2>
+          <div class="vl-testimonials">
+            <div class="vl-quote">
+              “Before Velocity Logic, I’d sit down at 9 PM and crank out quotes. Now the system answers within a minute,
+              and customers think we have a full-time office staff.”
+              <small>Jared L. — Owner, CedarLine Fencing</small>
+            </div>
+            <div class="vl-quote">
+              “People send us novels over email—photos, measurements, random notes. Velocity Logic turns that chaos into
+              a clean, priced-out estimate without my crew touching a keyboard.”
+              <small>Maria R. — GM, Skyline Outdoor</small>
+            </div>
+            <div class="vl-quote">
+              “We used to overpromise because no one checked stock until the morning. Now every quote is based on live
+              inventory, and we stopped having those uncomfortable ‘sorry, we’re out’ calls.”
+              <small>Devon K. — Ops Lead, Northside Materials</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="vl-section">
+          <h2>Pricing & 14‑Day Free Trial</h2>
+          <p>Every plan starts with a 14‑day free trial so you can see Velocity Logic quoting from your own inbox.</p>
+          <div class="vl-pricing">
+            <div class="vl-plan">
+              <h3>Standard Plan</h3>
+              <div class="vl-price">$299<span style="font-size:0.8rem;font-weight:500;">/mo</span></div>
+              <p>Perfect for the solo operator who wants evenings back.</p>
+              <ul class="vl-list">
+                <li>Instant email drafting.</li>
+                <li>Basic price list logic.</li>
+                <li>Replaces: your Sunday night quoting sessions.</li>
+              </ul>
+            </div>
+            <div class="vl-plan">
+              <div class="vl-badge">Most Popular</div>
+              <h3>Pro Plan</h3>
+              <div class="vl-price">$599<span style="font-size:0.8rem;font-weight:500;">/mo</span></div>
+              <p>For scaling shops that want full integration and automation.</p>
+              <ul class="vl-list">
+                <li>Smart inventory lookup.</li>
+                <li>Pushes accepted jobs into your CRM.</li>
+                <li>Priority support and onboarding.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="vl-section">
+          <h2>Who Velocity Logic Is For</h2>
+          <p>
+            Velocity Logic is built for high-volume trades, fencing contractors, deck builders, landscaping companies,
+            and supply yards that are drowning in inbound demand. If you’re losing jobs because you answer too slowly,
+            this is for you.
+          </p>
+        </div>
+      </div>
+    </noscript>
+
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
