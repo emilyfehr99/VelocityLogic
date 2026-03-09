@@ -94,8 +94,11 @@ const WaitlistPage: React.FC = () => {
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-purple-500"></div>
 
                     <div className="text-center mb-8">
-                        <h1 className="text-3xl font-bold text-textMain mb-2 tracking-tight">Join Waitlist</h1>
-                        <p className="text-textMuted">Secure your spot for early access</p>
+                        <h1 className="text-3xl font-bold text-textMain mb-2 tracking-tight">Start Your 14‑Day Free Trial</h1>
+                        <p className="text-textMuted text-sm">
+                            Join the early access waitlist for the <span className="font-medium capitalize">{plan} Plan</span>.
+                            We’ll confirm details, then switch on a 14‑day free trial—no credit card required to start.
+                        </p>
                     </div>
 
                     {/* Plan Selection */}
@@ -201,15 +204,29 @@ const WaitlistPage: React.FC = () => {
 
                         {/* Password Field Removed for Waitlist */}
 
-                        <div className="bg-surfaceHighlight/50 rounded-xl p-4 border border-border/50">
-                            <div className="flex items-start gap-3">
-                                <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-                                    <Check className="w-3 h-3 text-primary" />
+                        <div className="space-y-3">
+                            <div className="bg-surfaceHighlight/50 rounded-xl p-4 border border-border/50">
+                                <div className="flex items-start gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Check className="w-3 h-3 text-primary" />
+                                    </div>
+                                    <p className="text-xs text-textMuted leading-relaxed">
+                                        You’re reserving a spot for the <span className="text-textMain font-bold capitalize">{plan} Plan</span>.
+                                        {plan === 'pro' ? ' Includes smart inventory lookup and CRM integration.' : ' Perfect for solo operators reclaiming their evenings.'}
+                                    </p>
                                 </div>
-                                <p className="text-xs text-textMuted leading-relaxed">
-                                    You are interested in the <span className="text-textMain font-bold capitalize">{plan} Plan</span>.
-                                    {plan === 'pro' ? ' Includes full CRM integration.' : ' Perfect for starting out.'}
+                            </div>
+
+                            <div className="bg-background rounded-xl p-4 border border-border/60">
+                                <p className="text-[11px] font-semibold text-textMain uppercase tracking-[0.18em] mb-2">
+                                    What happens after you click
                                 </p>
+                                <ol className="text-xs text-textMuted space-y-1.5 list-decimal list-inside">
+                                    <li>You’ll get an email confirming we received your waitlist request.</li>
+                                    <li>When your spot opens, we’ll help connect your inbox and inventory sheets.</li>
+                                    <li>We switch on your <span className="text-textMain font-semibold">14‑day free trial</span> so Velocity Logic can start drafting quotes from real leads.</li>
+                                    <li>Before the trial ends, we’ll review results together and help you pick a plan—or you can turn it off with one click.</li>
+                                </ol>
                             </div>
                         </div>
 
@@ -218,7 +235,7 @@ const WaitlistPage: React.FC = () => {
                             disabled={isLoading}
                             className="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-blue-600 transition-all shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
-                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Join Waitlist'}
+                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Join Waitlist & Start Trial'}
                         </button>
                     </form>
                 </div>
