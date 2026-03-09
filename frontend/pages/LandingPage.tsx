@@ -99,7 +99,7 @@ const LandingPage: React.FC = () => {
               type="submit"
               className="px-6 py-3 rounded-full bg-primary text-background text-sm font-semibold tracking-tight hover:bg-primary/glow transition-colors shadow-lg hover:shadow-primary/30"
             >
-              Join the waitlist
+              Get early access link
             </button>
           </form>
 
