@@ -230,13 +230,19 @@ const WaitlistPage: React.FC = () => {
                             </div>
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-blue-600 transition-all shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                        >
-                            {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Join Waitlist & Start Trial'}
-                        </button>
+                        <div className="space-y-2">
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-blue-600 transition-all shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            >
+                                {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Join Waitlist & Start Trial'}
+                            </button>
+                            <p className="text-[11px] text-textMuted text-center leading-relaxed">
+                                No credit card required to start. We’ll never share your email, and you can ask us to delete your data
+                                at any time during or after the trial.
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>

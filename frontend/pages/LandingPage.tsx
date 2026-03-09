@@ -44,7 +44,7 @@ const LandingPage: React.FC = () => {
             </span>
           </h1>
 
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-textMuted mb-12 leading-relaxed font-light">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-textMuted mb-10 leading-relaxed font-light">
             Your competitors take 24 hours to reply. Velocity Logic replies in <span className="text-textMain font-medium">30 seconds</span>.
             The automated estimator that reads your emails, checks your inventory, and closes deals while you sleep.
           </p>
@@ -52,12 +52,12 @@ const LandingPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <button
               onClick={() => {
-                trackEvent('cta_click', { button: 'hero_waitlist' });
-                document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+                trackEvent('cta_click', { button: 'hero_trial' });
+                window.location.href = '/#/signup';
               }}
               className="group relative px-8 py-4 bg-textMain text-background font-bold tracking-tight rounded-full hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span className="relative flex items-center gap-2">Join Waitlist <ArrowRight className="w-4 h-4" /></span>
+              <span className="relative flex items-center gap-2">Start 14‑Day Free Trial <ArrowRight className="w-4 h-4" /></span>
             </button>
             <button
               onClick={() => {
@@ -284,6 +284,39 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* 3B. HOW IT WORKS */}
+      <section className="py-16 bg-background border-b border-border/60">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary mb-3">How Velocity Logic Fits Into Your Day</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-textMain tracking-tight">From inbox to priced quote in three steps.</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            <div className="p-6 rounded-2xl bg-surface border border-border/70">
+              <p className="text-xs font-mono text-textMuted uppercase tracking-[0.24em] mb-2">Step 1</p>
+              <h3 className="text-sm font-semibold text-textMain mb-2">Connect your email and price sheets</h3>
+              <p className="text-xs text-textMuted leading-relaxed">
+                We plug into the inbox where leads already land and sync your inventory or price list so the system never guesses.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl bg-surface border border-border/70">
+              <p className="text-xs font-mono text-textMuted uppercase tracking-[0.24em] mb-2">Step 2</p>
+              <h3 className="text-sm font-semibold text-textMain mb-2">Let it read new requests</h3>
+              <p className="text-xs text-textMuted leading-relaxed">
+                Velocity Logic reads messy emails, photos, and notes, calculates quantities, and drafts a professional quote in about 30 seconds.
+              </p>
+            </div>
+            <div className="p-6 rounded-2xl bg-surface border border-border/70">
+              <p className="text-xs font-mono text-textMuted uppercase tracking-[0.24em] mb-2">Step 3</p>
+              <h3 className="text-sm font-semibold text-textMain mb-2">You approve, it sends</h3>
+              <p className="text-xs text-textMuted leading-relaxed">
+                During the trial you approve drafts with a click. Once you trust it, let Velocity Logic auto-send quotes for certain jobs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 4. INTEGRATION */}
       <section className="py-32 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none"></div>
@@ -423,7 +456,7 @@ const LandingPage: React.FC = () => {
       {/* 6. PRICING */}
       <section id="pricing" className="py-32 bg-surfaceHighlight/30 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-4 tracking-tight">Cheaper Than Your Worst Employee.</h2>
             <p className="text-textMuted text-lg max-w-2xl mx-auto mb-3">Hire a system that works 24/7/365 without complaints, sick days, or mistakes.</p>
             <p className="text-sm text-primary font-medium tracking-tight">Every plan starts with a <span className="font-semibold">14‑day free trial</span>.</p>
@@ -501,6 +534,55 @@ const LandingPage: React.FC = () => {
                 Start 14‑Day Free Trial
               </button>
             </div>
+          </div>
+          <p className="mt-8 text-center text-xs text-textMuted max-w-xl mx-auto">
+            No credit card required to start. If you don’t see faster responses and cleaner quotes by the end of your 14‑day trial,
+            you walk away with zero obligation.
+          </p>
+        </div>
+      </section>
+
+      {/* 7. FAQ – Reduce Uncertainty */}
+      <section className="py-24 bg-background border-t border-border/60">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary mb-3">Questions, Answered</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-textMain tracking-tight">What most shops ask before turning it on.</h2>
+          </div>
+          <div className="space-y-4">
+            <details className="group border border-border/70 rounded-2xl bg-surface">
+              <summary className="flex items-center justify-between gap-4 px-4 sm:px-5 py-3 cursor-pointer">
+                <span className="text-sm font-semibold text-textMain">How long does setup actually take?</span>
+                <span className="text-xs text-textMuted group-open:hidden">+</span>
+                <span className="text-xs text-textMuted hidden group-open:inline">−</span>
+              </summary>
+              <div className="px-4 sm:px-5 pb-4 text-xs text-textMuted leading-relaxed border-t border-border/70">
+                Most shops are live in under a week. We help you connect the inbox where leads land and upload your price sheets or
+                inventory exports so quotes stay grounded in reality.
+              </div>
+            </details>
+            <details className="group border border-border/70 rounded-2xl bg-surface">
+              <summary className="flex items-center justify-between gap-4 px-4 sm:px-5 py-3 cursor-pointer">
+                <span className="text-sm font-semibold text-textMain">Will Velocity Logic send anything without my approval?</span>
+                <span className="text-xs text-textMuted group-open:hidden">+</span>
+                <span className="text-xs text-textMuted hidden group-open:inline">−</span>
+              </summary>
+              <div className="px-4 sm:px-5 pb-4 text-xs text-textMuted leading-relaxed border-t border-border/70">
+                During the 14‑day trial, nothing is sent without a human review. You approve drafts with a click.
+                After the trial, you can choose rules for which jobs can be auto-sent.
+              </div>
+            </details>
+            <details className="group border border-border/70 rounded-2xl bg-surface">
+              <summary className="flex items-center justify-between gap-4 px-4 sm:px-5 py-3 cursor-pointer">
+                <span className="text-sm font-semibold text-textMain">What happens after the trial?</span>
+                <span className="text-xs text-textMuted group-open:hidden">+</span>
+                <span className="text-xs text-textMuted hidden group-open:inline">−</span>
+              </summary>
+              <div className="px-4 sm:px-5 pb-4 text-xs text-textMuted leading-relaxed border-t border-border/70">
+                We review results together, look at how many quotes Velocity Logic handled, and decide whether Standard or Pro is a fit.
+                If it’s not, you simply turn it off—no lock‑in, no surprises.
+              </div>
+            </details>
           </div>
         </div>
       </section>
