@@ -217,14 +217,23 @@ const LandingPage: React.FC = () => {
       <section id="features" className="py-24 bg-surfaceHighlight/50 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-6 tracking-tight">The First Quoting Tool <br />That <span className="text-gradient-primary">Doesn't Need You</span>.</h2>
-            <p className="text-textMuted text-lg font-light">Traditional CRMs are just fancy filing cabinets. We are an active engine that sits on top of your business.</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary mb-3">
+              Why This Feels Different
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-4 tracking-tight">
+              The First Quoting Tool <br />
+              That <span className="text-gradient-primary">Doesn't Need You</span>.
+            </h2>
+            <p className="text-textMuted text-lg font-light">
+              Traditional CRMs are just fancy filing cabinets. Velocity Logic behaves like a field-ready estimating partner
+              that watches your inbox, knows your stock, and does the math for you.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Feature 1 - Large Span */}
-            <div className="md:col-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-border/80 transition-all shadow-sm hover:shadow-md relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-bl-full -mr-20 -mt-20 transition-transform group-hover:scale-110 duration-700 pointer-events-none"></div>
+            <div className="md:col-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-primary/40 transition-all shadow-md hover:shadow-xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-primary/15 to-transparent rounded-bl-full -mr-20 -mt-20 transition-transform group-hover:scale-110 duration-700 pointer-events-none"></div>
               <div className="relative z-10">
                 <div className="w-12 h-12 bg-surfaceHighlight rounded-xl border border-border flex items-center justify-center mb-6 shadow-sm">
                   <Database className="w-6 h-6 text-textMain" />
@@ -235,25 +244,44 @@ const LandingPage: React.FC = () => {
                 </p>
               </div>
               {/* Visual Element Mockup */}
-              <div className="mt-8 p-5 bg-background rounded-xl border border-border font-mono text-xs text-textMuted shadow-inner">
-                <div className="flex justify-between mb-3 border-b border-border pb-2">
-                  <span>{'>'} Checking stock levels...</span>
-                  <span className="text-green-500 font-bold">READY</span>
+              <div className="mt-8 p-5 bg-background rounded-xl border border-border font-mono text-xs text-textMuted shadow-inner overflow-hidden">
+                <div className="flex justify-between mb-3 border-b border-border pb-2 items-center">
+                  <span className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    {'>'} Checking stock levels...
+                  </span>
+                  <span className="text-emerald-400 font-bold flex items-center gap-1">
+                    READY
+                  </span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span>{'>'} Item "2x4 Cedar"</span>
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-16 bg-surfaceHighlight rounded-full overflow-hidden">
-                      <div className="h-full w-3/4 bg-primary"></div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span>{'>'} Item "2x4 Cedar"</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-1.5 w-20 bg-surfaceHighlight rounded-full overflow-hidden">
+                        <div className="h-full w-3/4 bg-primary transition-all duration-700 group-hover:w-[90%]"></div>
+                      </div>
+                      <span className="text-primary font-bold">342 Units</span>
                     </div>
-                    <span className="text-primary font-bold">342 Units</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>{'>'} Item "6x6 Posts"</span>
+                    <div className="flex items-center gap-2">
+                      <div className="h-1.5 w-20 bg-surfaceHighlight rounded-full overflow-hidden">
+                        <div className="h-full w-2/5 bg-primary/70 transition-all duration-700 group-hover:w-1/2"></div>
+                      </div>
+                      <span className="text-textMuted font-medium">Low stock</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Feature 2 - Tall */}
-            <div className="md:col-span-1 md:row-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-border/80 transition-all shadow-sm hover:shadow-md flex flex-col relative overflow-hidden">
+            <div className="md:col-span-1 md:row-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-primary/40 transition-all shadow-md hover:shadow-xl flex flex-col relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-background/50 to-transparent pointer-events-none"></div>
               <div className="w-12 h-12 bg-surfaceHighlight rounded-xl border border-border flex items-center justify-center mb-6 shadow-sm">
                 <MessageSquareWarning className="w-6 h-6 text-textMain" />
@@ -263,23 +291,30 @@ const LandingPage: React.FC = () => {
                 Customers don't fill out web forms perfectly. Velocity Logic reads raw emails, texts, and voice notes—and turns them into professional estimates.
               </p>
               <div className="mt-auto bg-surfaceHighlight rounded-xl p-4 border border-border relative z-10 shadow-sm">
-                <div className="flex gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-full bg-zinc-400 flex items-center justify-center text-[10px] font-bold text-white">JD</div>
-                  <div className="bg-surface p-3 rounded-2xl rounded-tl-none text-xs text-textMain leading-relaxed border border-border shadow-sm">
+                <div className="flex gap-3 mb-3 items-start">
+                  <div className="w-8 h-8 rounded-full bg-zinc-400 flex items-center justify-center text-[10px] font-bold text-white shadow-sm">
+                    JD
+                  </div>
+                  <div className="bg-surface p-3 rounded-2xl rounded-tl-none text-xs text-textMain leading-relaxed border border-border shadow-sm transform group-hover:-translate-y-0.5 transition-transform">
                     "I need a fence, about 40ft, wood..."
                   </div>
                 </div>
-                <div className="flex gap-2 justify-center mb-1">
+                <div className="flex justify-center mb-1">
                   <div className="w-0.5 h-3 bg-border"></div>
                 </div>
-                <div className="bg-primary/10 border border-primary/20 p-2.5 rounded-lg text-center text-xs text-primary font-bold mt-1 shadow-sm">
-                  Quote Generated: $1,200
+                <div className="flex gap-2 justify-center mb-1">
+                  <div className="text-[10px] font-mono text-textMuted uppercase tracking-[0.24em]">
+                    AI DRAFT
+                  </div>
+                </div>
+                <div className="bg-primary/10 border border-primary/30 p-2.5 rounded-lg text-center text-xs text-primary font-bold mt-1 shadow-sm">
+                  Quote Generated: $1,200 · Ready to send
                 </div>
               </div>
             </div>
 
             {/* Feature 3 */}
-            <div className="md:col-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-border/80 transition-all shadow-sm hover:shadow-md relative overflow-hidden">
+            <div className="md:col-span-2 p-10 rounded-3xl bg-surface border border-border hover:border-primary/40 transition-all shadow-md hover:shadow-xl relative overflow-hidden group">
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="flex-1">
                   <div className="w-12 h-12 bg-surfaceHighlight rounded-xl border border-border flex items-center justify-center mb-6 shadow-sm">
@@ -306,7 +341,7 @@ const LandingPage: React.FC = () => {
                     </div>
                     <div className="flex justify-between pt-3 border-t border-border font-bold">
                       <span className="text-textMuted">Total</span>
-                      <span className="text-textMain">440 sqft</span>
+                      <span className="text-textMain group-hover:text-primary transition-colors">440 sqft</span>
                     </div>
                   </div>
                 </div>
