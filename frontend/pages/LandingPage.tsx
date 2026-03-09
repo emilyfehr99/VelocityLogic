@@ -17,14 +17,26 @@ import dashboardImg from '../assets/dashboard.png';
 import { trackEvent } from '../lib/analytics';
 
 const LandingPage: React.FC = () => {
+  const handleWaitlistFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const input = form.elements.namedItem('email') as HTMLInputElement | null;
+    const email = input?.value.trim();
+    const url = email
+      ? `/#/signup?email=${encodeURIComponent(email)}`
+      : '/#/signup';
+    window.location.href = url;
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-textMain font-sans transition-colors duration-500">
 
       {/* 1. HERO SECTION */}
       <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden flex flex-col items-center">
-        {/* Spotlight Effect - Uses CSS Variable */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-primary/20 blur-[120px] rounded-[100%] pointer-events-none z-0 opacity-40"></div>
-        <div className="absolute inset-0 bg-grid z-0 opacity-100 mask-image-gradient"></div>
+        {/* Hero Background: Deep Navy + Motion */}
+        <div className="absolute inset-0 bg-grid z-0 opacity-60 mask-image-gradient"></div>
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-radial from-primary/40 via-transparent to-transparent blur-3xl opacity-60 animate-pulse-slow pointer-events-none" />
+        <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] bg-gradient-radial from-accent/40 via-transparent to-transparent blur-3xl opacity-60 animate-spotlight pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
 
@@ -57,7 +69,7 @@ const LandingPage: React.FC = () => {
               }}
               className="group relative px-8 py-4 bg-textMain text-background font-bold tracking-tight rounded-full hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span className="relative flex items-center gap-2">Start 14‑Day Free Trial <ArrowRight className="w-4 h-4" /></span>
+              <span className="relative flex items-center gap-2">Join the Waitlist <ArrowRight className="w-4 h-4" /></span>
             </button>
             <button
               onClick={() => {
@@ -70,6 +82,26 @@ const LandingPage: React.FC = () => {
               See 30-Second Demo
             </button>
           </div>
+
+          {/* Simple hero waitlist form */}
+          <form
+            onSubmit={handleWaitlistFormSubmit}
+            className="mt-6 w-full max-w-md mx-auto flex flex-col sm:flex-row gap-3 items-stretch"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@company.com"
+              className="flex-1 rounded-full bg-surface border border-border px-5 py-3 text-sm text-textMain placeholder:text-textMuted/60 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary/60"
+            />
+            <button
+              type="submit"
+              className="px-6 py-3 rounded-full bg-primary text-background text-sm font-semibold tracking-tight hover:bg-primary/glow transition-colors shadow-lg hover:shadow-primary/30"
+            >
+              Join the waitlist
+            </button>
+          </form>
 
           {/* Dashboard Preview */}
           <div className="mt-16 relative w-full max-w-5xl mx-auto perspective-[2000px] group">
@@ -277,6 +309,57 @@ const LandingPage: React.FC = () => {
                       <span className="text-textMain">440 sqft</span>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3B. PRODUCT MOCKUPS – EMAIL → AI QUOTE FLOW */}
+      <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-primary mb-3">See It In Action</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-textMain tracking-tight">
+              From messy inbox to clean quote in under a minute.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-4">
+            <div className="p-4 rounded-2xl bg-surface border border-border/70 shadow-sm flex flex-col">
+              <p className="text-[10px] font-mono text-textMuted uppercase tracking-[0.24em] mb-2">1 · Inbox</p>
+              <div className="flex-1 rounded-xl bg-surfaceHighlight border border-border/70 p-3 text-[11px] text-textMuted leading-snug">
+                <div className="font-semibold text-textMain mb-1">Subject: Fence quote?</div>
+                “Hey, we need about 40ft of wood fence along the back alley. Can you send a ballpark?”
+              </div>
+            </div>
+            <div className="p-4 rounded-2xl bg-surface border border-border/70 shadow-sm flex flex-col">
+              <p className="text-[10px] font-mono text-textMuted uppercase tracking-[0.24em] mb-2">2 · AI Parsing</p>
+              <div className="flex-1 rounded-xl bg-surfaceHighlight border border-border/70 p-3 text-[11px] text-textMuted leading-snug font-mono">
+                {'>'} Length: <span className="text-textMain font-semibold">40 ft</span><br />
+                {'>'} Material: <span className="text-textMain font-semibold">Cedar privacy</span><br />
+                {'>'} Gate: <span className="text-textMain font-semibold">1 × 4ft</span>
+              </div>
+            </div>
+            <div className="p-4 rounded-2xl bg-surface border border-border/70 shadow-sm flex flex-col">
+              <p className="text-[10px] font-mono text-textMuted uppercase tracking-[0.24em] mb-2">3 · Quote Draft</p>
+              <div className="flex-1 rounded-xl bg-surfaceHighlight border border-border/70 p-3 text-[11px] text-textMuted leading-snug">
+                <div className="flex justify-between mb-1">
+                  <span className="font-semibold text-textMain">Total</span>
+                  <span className="font-bold text-primary">$4,280</span>
+                </div>
+                <ul className="list-disc list-inside">
+                  <li>Materials, labor, disposal</li>
+                  <li>Includes 1 cedar gate</li>
+                </ul>
+              </div>
+            </div>
+            <div className="p-4 rounded-2xl bg-surface border border-border/70 shadow-sm flex flex-col">
+              <p className="text-[10px] font-mono text-textMuted uppercase tracking-[0.24em] mb-2">4 · Send & Sync</p>
+              <div className="flex-1 rounded-xl bg-surfaceHighlight border border-border/70 p-3 text-[11px] text-textMuted leading-snug">
+                <p className="mb-2">You approve with a click, Velocity Logic emails the customer, and pushes the job into your CRM.</p>
+                <div className="inline-flex items-center gap-2 text-[10px] font-mono text-primary bg-primary/10 px-2 py-1 rounded-full border border-primary/40">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> LIVE QUOTE SENT
                 </div>
               </div>
             </div>
@@ -594,8 +677,17 @@ const LandingPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-4xl md:text-6xl font-bold text-textMain mb-10 tracking-tighter leading-tight">While your competitors are typing,<br /> you are closing.</h2>
           <div className="flex flex-col items-center gap-6">
-            <Link to="/vs-jobber" className="group inline-flex items-center gap-2 text-primary hover:text-textMain transition-colors font-semibold text-lg tracking-tight">
-              Compare vs. Traditional CRMs <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <button
+              onClick={() => {
+                trackEvent('cta_click', { button: 'footer_waitlist' });
+                window.location.href = '/#/signup';
+              }}
+              className="px-10 py-4 rounded-full bg-primary text-background font-bold tracking-tight text-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              Join the waitlist
+            </button>
+            <Link to="/vs-jobber" className="group inline-flex items-center gap-2 text-primary hover:text-textMain transition-colors font-semibold text-sm tracking-tight">
+              Compare vs. Traditional CRMs <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>

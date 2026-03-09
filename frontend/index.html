@@ -120,12 +120,12 @@
               border: 'rgb(var(--border-color) / <alpha-value>)',
               
               primary: {
-                DEFAULT: '#3b82f6', // Blue 500
-                glow: '#60a5fa', // Blue 400
+                DEFAULT: '#f97316', // Safety Orange
+                glow: '#fdba74', // Soft Orange
               },
               accent: {
-                DEFAULT: '#06b6d4', // Cyan 500
-                glow: '#22d3ee', // Cyan 400
+                DEFAULT: '#0f172a', // Deep Navy
+                glow: '#1e293b', // Lighter Navy
               }
             },
             letterSpacing: {
@@ -165,14 +165,14 @@
       }
 
       .dark {
-        /* Hard-Tech Dark Mode */
-        --bg-color: 9 9 11; /* #09090b */
-        --surface-color: 24 24 27; /* #18181b */
-        --surface-highlight: 39 39 42; /* #27272a */
-        --text-main: 244 244 245; /* #f4f4f5 */
-        --text-muted: 161 161 170; /* #a1a1aa */
-        --border-color: 255 255 255;
-        --spotlight-gradient: conic-gradient(from 0deg at 50% -20%, transparent 0deg, rgba(255,255,255,0.1) 40deg, transparent 80deg);
+        /* Deep Navy + Safety Orange */
+        --bg-color: 15 23 42; /* #0f172a */
+        --surface-color: 15 23 42; /* #0f172a */
+        --surface-highlight: 22 30 59; /* #161e3b */
+        --text-main: 248 250 252; /* #f8fafc */
+        --text-muted: 148 163 184; /* #94a3b8 */
+        --border-color: 30 64 175; /* Tailwind blue-700 as subtle border */
+        --spotlight-gradient: conic-gradient(from 0deg at 50% -20%, transparent 0deg, rgba(249,115,22,0.20) 40deg, transparent 80deg);
       }
 
       body {

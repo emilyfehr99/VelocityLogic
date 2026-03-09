@@ -19,8 +19,17 @@ const WaitlistPage: React.FC = () => {
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const selectedPlan = params.get('plan');
+        const emailParam = params.get('email');
+
         if (selectedPlan) {
             setPlan(selectedPlan);
+        }
+
+        if (emailParam) {
+            setFormData(prev => ({
+                ...prev,
+                email: emailParam
+            }));
         }
     }, [location]);
 
