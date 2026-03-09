@@ -505,34 +505,6 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Founder / Credibility */}
-      <section className="py-20 bg-background border-t border-border/60">
-        <div className="max-w-4xl mx-auto px-4 flex flex-col gap-8 md:flex-row md:items-center">
-          <div className="flex-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-3">Who Runs Velocity Logic</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-textMain mb-3 tracking-tight">
-              Built by a founder obsessed with field-first sales.
-            </h2>
-            <p className="text-textMuted text-sm md:text-base leading-relaxed mb-4">
-              Velocity Logic is built by <span className="text-textMain font-medium">Emily Fehr</span>, who has spent years working with high-volume trades
-              and home services teams that were drowning in inbound demand but still quoting from a laptop at 10 PM.
-            </p>
-            <p className="text-textMuted text-sm md:text-base leading-relaxed">
-              The product exists for one reason: to answer real customers, from your real inbox, faster and more accurately
-              than any traditional CRM ever could.
-            </p>
-          </div>
-          <div className="flex-1 md:border-l md:border-border/60 md:pl-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-textMuted mb-3">How To Get Started</p>
-            <ol className="text-sm text-textMuted space-y-2 list-decimal list-inside">
-              <li>Pick a plan and join the waitlist for a <span className="text-textMain font-medium">14‑day free trial</span>.</li>
-              <li>We connect your email and inventory sheets so quotes stay grounded in reality.</li>
-              <li>Approve a few drafts, then let Velocity Logic answer new leads automatically.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
       {/* CTA FOOTER */}
       <section className="py-32 relative overflow-hidden bg-background">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
