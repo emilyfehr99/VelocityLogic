@@ -334,12 +334,91 @@ const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. PRICING */}
+      {/* 5. TESTIMONIALS */}
+      <section className="py-28 bg-background border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-xs text-primary font-semibold tracking-[0.25em] uppercase mb-4">Customer Stories</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-textMain mb-4 tracking-tight">
+              Real Shops. Real Inboxes. Real Revenue.
+            </h2>
+            <p className="text-textMuted max-w-2xl mx-auto text-base md:text-lg">
+              Velocity Logic sits quietly in the background—reading emails, checking stock, and sending quotes before
+              your competitors even see the lead.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Testimonial 1 */}
+            <div className="p-6 rounded-3xl bg-surface border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col">
+              <div className="text-xs font-mono text-primary mb-3 tracking-[0.2em] uppercase">Fencing Contractor</div>
+              <blockquote className="text-sm md:text-base text-textMain leading-relaxed mb-6">
+                “Before Velocity Logic, I’d sit down at 9 PM and crank out quotes. Now the system answers within a
+                minute, and customers think we have a full-time office staff.”
+              </blockquote>
+              <div className="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-semibold text-textMain">Jared L.</div>
+                  <div className="text-xs text-textMuted">Owner, CedarLine Fencing</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-textMuted uppercase tracking-[0.18em]">First Response Time</div>
+                  <div className="text-sm font-bold text-primary">32 seconds</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="p-6 rounded-3xl bg-surface border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col relative overflow-hidden">
+              <div className="absolute -top-3 -right-3 px-3 py-1 rounded-full bg-primary text-background text-[10px] font-bold tracking-[0.18em] uppercase shadow-lg">
+                Inbox Chaos → Order
+              </div>
+              <div className="text-xs font-mono text-primary mb-3 tracking-[0.2em] uppercase">Deck &amp; Patio Builder</div>
+              <blockquote className="text-sm md:text-base text-textMain leading-relaxed mb-6">
+                “People send us novels over email—photos, measurements, random notes. Velocity Logic turns that mess
+                into a clean estimate without my crew touching a keyboard.”
+              </blockquote>
+              <div className="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-semibold text-textMain">Maria R.</div>
+                  <div className="text-xs text-textMuted">GM, Skyline Outdoor</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-textMuted uppercase tracking-[0.18em]">Quoted Per Week</div>
+                  <div className="text-sm font-bold text-primary">4× increase</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="p-6 rounded-3xl bg-surface border border-border shadow-sm hover:shadow-md transition-shadow flex flex-col">
+              <div className="text-xs font-mono text-primary mb-3 tracking-[0.2em] uppercase">Supply Yard</div>
+              <blockquote className="text-sm md:text-base text-textMain leading-relaxed mb-6">
+                “We used to overpromise because no one checked stock until the morning. Now every quote is based on
+                live inventory, and we stopped having those uncomfortable ‘sorry, we&rsquo;re out’ calls.”
+              </blockquote>
+              <div className="mt-auto pt-4 border-t border-border flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-semibold text-textMain">Devon K.</div>
+                  <div className="text-xs text-textMuted">Ops Lead, Northside Materials</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-textMuted uppercase tracking-[0.18em]">Lost Deals To Stock</div>
+                  <div className="text-sm font-bold text-primary">-63%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. PRICING */}
       <section id="pricing" className="py-32 bg-surfaceHighlight/30 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-6 tracking-tight">Cheaper Than Your Worst Employee.</h2>
-            <p className="text-textMuted text-lg max-w-2xl mx-auto">Hire a system that works 24/7/365 without complaints, sick days, or mistakes.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-textMain mb-4 tracking-tight">Cheaper Than Your Worst Employee.</h2>
+            <p className="text-textMuted text-lg max-w-2xl mx-auto mb-3">Hire a system that works 24/7/365 without complaints, sick days, or mistakes.</p>
+            <p className="text-sm text-primary font-medium tracking-tight">Every plan starts with a <span className="font-semibold">14‑day free trial</span>.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
@@ -371,7 +450,7 @@ const LandingPage: React.FC = () => {
                 }}
                 className="w-full py-4 rounded-xl bg-surfaceHighlight border border-border hover:bg-border text-textMain font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                Join Waitlist
+                Start 14‑Day Free Trial
               </button>
             </div>
 
@@ -411,7 +490,7 @@ const LandingPage: React.FC = () => {
                 }}
                 className="w-full py-4 rounded-xl bg-textMain text-background font-bold hover:opacity-90 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
               >
-                Join Waitlist
+                Start 14‑Day Free Trial
               </button>
             </div>
           </div>
